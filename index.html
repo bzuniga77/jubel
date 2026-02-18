@@ -76,6 +76,7 @@ img {
 <div id="screen0" class="screen active">
   <h1>🔐 Acceso secreto</h1>
   <p>Solo mi princesa puede entrar 👑</p>
+    <p>La contraseña es el pokemon que me recuerda a ti 👑</p>
   <input type="password" id="password" placeholder="Contraseña secreta">
   <br>
   <button onclick="checkPassword()">Entrar 💜</button>
@@ -84,7 +85,7 @@ img {
 
 <!-- 🟣 INTRO -->
 <div id="screen1" class="screen">
-  <h1>Hola Jubel 💜</h1>
+  <h1>Hola Mi princesa 💜</h1>
   <p>¿Lista para esta pequeña aventura hecha con amor?</p>
   <button onclick="nextScreen(2)">Jugar 🎮</button>
 </div>
@@ -94,16 +95,17 @@ img {
   <h2>Nuestra historia 💞</h2>
   <p>Todo empezó el 18 de febrero del 2021…</p>
   <p>y desde ese día, mi vida tiene más color y más amor 💜</p>
+  <p>Todos mis días son más lindos contigo a mi lado, tengo la mejor novia del mundo y no la cambiaría por nada en este mundo, Te amo infinitamente y te quiero para siempre en mi vida 💜</p>
   <button onclick="nextScreen(3)">Continuar ✨</button>
 </div>
 
 <!-- 🎮 MINI JUEGO -->
 <div id="screen3" class="screen">
   <h2>Descubre lo que amo de ti 💜</h2>
-  <div class="card" onclick="reveal(this, 'Tu sonrisa 💜')">?</div>
-  <div class="card" onclick="reveal(this, 'Tu forma de ser 🌸')">?</div>
-  <div class="card" onclick="reveal(this, 'Tus ojitos hermosos ✨')">?</div>
-  <div class="card" onclick="reveal(this, 'Lo feliz que me haces 😭')">?</div>
+  <div class="card" onclick="reveal(this, 'Como me miran esos ojos hermosos con amor 💜')">?</div>
+  <div class="card" onclick="reveal(this, 'Tu risas por causa mía 🌸')">?</div>
+  <div class="card" onclick="reveal(this, 'La confianza que me cuentes y me confies tu vida y tus sueños ✨')">?</div>
+  <div class="card" onclick="reveal(this, 'Lo feliz que me haces y que planeas un hermoso futuro conmigo')">?</div>
   <br>
   <button onclick="nextScreen(4)">Ver sorpresa 💝</button>
 </div>
@@ -111,11 +113,11 @@ img {
 <!-- 📸 GALERÍA -->
 <div id="screen4" class="screen">
   <h2>Nuestros momentos 📸</h2>
-  <img src="foto1.jpg">
-  <img src="foto2.jpg">
-  <img src="foto3.jpg">
-  <img src="foto4.jpg">
-  <img src="foto5.jpg">
+  <img src="foto1.jpeg">
+  <img src="foto2.jpeg">
+  <img src="foto3.jpeg">
+  <img src="foto4.jpeg">
+  <img src="foto5.jpeg">
   <button onclick="startFinal()">Continuar 💌</button>
 </div>
 
@@ -126,7 +128,7 @@ img {
   <p>
   Desde el 18 de febrero de 2021…<br>
   mi vida cambió completamente.<br>
-  Eres mi paz, mi felicidad y mi lugar seguro 💜<br><br>
+  Eres mi tranquilidad, mi felicidad y mi lugar seguro. Junto a ti siento lo que es amar verdaderamente 💜<br><br>
   Con amor,<br>
   Tu amor brandito 💜
   </p>
@@ -143,7 +145,7 @@ function checkPassword() {
   if(pass === "ninetales"){
     nextScreen(1);
   } else {
-    document.getElementById("error").innerText = "Ups… intenta otra vez mi amor 😝💜";
+    document.getElementById("error").innerText = "Ups… intenta otra vez mi princesa💜";
   }
 }
 
@@ -192,7 +194,7 @@ function proposal(){
     requestAnimationFrame(draw);
   }
   draw();
-  alert("Sabía que dirías que sí, Jubel 👑💜");
+  alert("Sabía que dirías que sí, Jubelkita 👑💜");
 }
 </script>
 
