@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Aventura de Jubel 💜</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg, #d8b4f8, #fbcfe8);
+  overflow: hidden;
+  text-align: center;
+  color: #4c1d95;
+}
+
+.screen {
+  display: none;
+  height: 100vh;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+}
+
+button {
+  background: #c084fc;
+  border: none;
+  padding: 15px 25px;
+  font-size: 18px;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  width: 140px;
+  height: 140px;
+  vertical-align: top;
+}
+
+img {
+  max-width: 90%;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+#hearts {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 PASSWORD -->
+<div id="screen0" class="screen active">
+  <h1>🔐 Acceso secreto</h1>
+  <p>Solo mi princesa puede entrar 👑</p>
+    <p>La contraseña es el pokemon que me recuerda a ti 👑</p>
+  <input type="password" id="password" placeholder="Contraseña secreta">
+  <br>
+  <button onclick="checkPassword()">Entrar 💜</button>
+  <p id="error"></p>
+</div>
+
+<!-- 🟣 INTRO -->
+<div id="screen1" class="screen">
+  <h1>Hola Mi princesa 💜</h1>
+  <p>¿Lista para esta pequeña aventura hecha con amor?</p>
+  <button onclick="nextScreen(2)">Jugar 🎮</button>
+</div>
+
+<!-- 📅 HISTORIA -->
+<div id="screen2" class="screen">
+  <h2>Nuestra historia 💞</h2>
+  <p>Todo empezó el 18 de febrero del 2021…</p>
+  <p>y desde ese día, mi vida tiene más color y más amor 💜</p>
+  <p>Todos mis días son más lindos contigo a mi lado, tengo la mejor novia del mundo y no la cambiaría por nada en este mundo, Te amo infinitamente y te quiero para siempre en mi vida 💜</p>
+  <button onclick="nextScreen(3)">Continuar ✨</button>
+</div>
+
+<!-- 🎮 MINI JUEGO -->
+<div id="screen3" class="screen">
+  <h2>Descubre lo que amo de ti 💜</h2>
+  <div class="card" onclick="reveal(this, 'Como me miran esos ojos hermosos con amor 💜')">?</div>
+  <div class="card" onclick="reveal(this, 'Tu risas por causa mía 🌸')">?</div>
+  <div class="card" onclick="reveal(this, 'La confianza que me cuentes y me confies tu vida y tus sueños ✨')">?</div>
+  <div class="card" onclick="reveal(this, 'Lo feliz que me haces y que planeas un hermoso futuro conmigo')">?</div>
+  <br>
+  <button onclick="nextScreen(4)">Ver sorpresa 💝</button>
+</div>
+
+<!-- 📸 GALERÍA -->
+<div id="screen4" class="screen">
+  <h2>Nuestros momentos 📸</h2>
+  <img src="foto1.jpeg">
+  <img src="foto2.jpeg">
+  <img src="foto3.jpeg">
+  <img src="foto4.jpeg">
+  <img src="foto5.jpeg">
+  <button onclick="startFinal()">Continuar 💌</button>
+</div>
+
+<!-- 💌 FINAL -->
+<div id="screen5" class="screen">
+  <h2>Eres lo mejor de mi vida 💜</h2>
+  <p id="counter"></p>
+  <p>
+  Desde el 18 de febrero de 2021…<br>
+  mi vida cambió completamente.<br>
+  Eres mi tranquilidad, mi felicidad y mi lugar seguro. Junto a ti siento lo que es amar verdaderamente 💜<br><br>
+  Con amor,<br>
+  Tu amor brandito 💜
+  </p>
+  <button onclick="proposal()">¿Quieres seguir siendo mi princesa para siempre? 💍</button>
+</div>
+
+<canvas id="hearts"></canvas>
+
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
+
+<script>
+function checkPassword() {
+  const pass = document.getElementById("password").value.toLowerCase();
+  if(pass === "ninetales"){
+    nextScreen(1);
+  } else {
+    document.getElementById("error").innerText = "Ups… intenta otra vez mi princesa💜";
+  }
+}
+
+function nextScreen(num){
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById("screen"+num).classList.add("active");
+}
+
+function reveal(card, text){
+  card.innerText = text;
+}
+
+function startFinal(){
+  nextScreen(5);
+  startCounter();
+  document.getElementById("music").play();
+}
+
+function startCounter(){
+  const startDate = new Date("2021-02-18");
+  const today = new Date();
+  const diff = Math.floor((today - startDate) / (1000*60*60*24));
+  document.getElementById("counter").innerText =
+    diff + " días juntos desde que empezó nuestra historia 💜";
+}
+
+function proposal(){
+  const canvas = document.getElementById("hearts");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let hearts = [];
+  for(let i=0;i<50;i++){
+    hearts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height});
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    hearts.forEach(h=>{
+      ctx.font="20px Arial";
+      ctx.fillText("💜",h.x,h.y);
+      h.y -= 1;
+      if(h.y<0) h.y=canvas.height;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+  alert("Sabía que dirías que sí, Jubelkita 👑💜");
+}
+</script>
+
+</body>
+</html>
